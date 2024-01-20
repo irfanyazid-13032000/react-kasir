@@ -4,6 +4,7 @@ import { numberFormat } from '../utils/numberFormat'
 
 export default function Keranjang() {
   const carts = useSelector((state)=>state.carts.data)
+  const total_shopping = useSelector((state)=>state.carts.total_shopping)
   return (
     <Col md={3} mt="2">
       <h4>Keranjang</h4>
@@ -29,6 +30,19 @@ export default function Keranjang() {
         </Row>
       </ListGroup.Item>
         ))}
+        <ListGroup.Item>
+          <Row>
+            <Col xs="2">
+            <h4>total</h4>
+            </Col>
+            <Col>
+            
+            </Col>
+            <Col>
+            <h3>Rp. {numberFormat(total_shopping)}</h3>
+            </Col>
+          </Row>
+        </ListGroup.Item>
       
     </ListGroup>
     </Col>

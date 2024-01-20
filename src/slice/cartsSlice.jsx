@@ -11,7 +11,6 @@ export const addToCart = createAsyncThunk('carts/addToCart', async (newCartItem,
   try {
     const state = getState();
     const existingCartItem = state.carts.data.find(item => item.product.id == newCartItem.id);
-    console.log(existingCartItem);
 
     if (existingCartItem) {
       // Product already exists in the cart, update the quantity and total price
@@ -47,9 +46,14 @@ const cartsSlice = createSlice({
   initialState: {
     data: [],
     loading: false,
-    error: null
+    error: null,
+    total_shopping:0
   },
-  reducers: {},
+  reducers: {
+    updateTotalShopping: (state, action) => {
+      state.total_shopping += action.payload.harga;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCarts.pending, (state) => {
@@ -75,6 +79,9 @@ const cartsSlice = createSlice({
       });
     }
   })
+
+  export const { updateTotalShopping } = cartsSlice.actions;
+
 
   export const selectCarts = (state) => state.carts.data;
   export const selectCartsLoading = (state) => state.carts.loading;

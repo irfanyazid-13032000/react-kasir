@@ -255,8 +255,8 @@
     },
     {
       "id": "2333",
-      "jumlah": 21,
-      "total_harga": 315000,
+      "jumlah": 23,
+      "total_harga": 345000,
       "product": {
         "id": "11",
         "kode": "K-011",
@@ -289,8 +289,8 @@
     },
     {
       "id": "602e",
-      "jumlah": 29,
-      "total_harga": 203000,
+      "jumlah": 31,
+      "total_harga": 217000,
       "product": {
         "id": "12",
         "kode": "K-012",
@@ -306,8 +306,8 @@
     },
     {
       "id": "ed83",
-      "jumlah": 6,
-      "total_harga": 96000,
+      "jumlah": 10,
+      "total_harga": 160000,
       "product": {
         "id": "1",
         "kode": "K-01",
@@ -340,8 +340,8 @@
     },
     {
       "id": "8dff",
-      "jumlah": 2,
-      "total_harga": 10000,
+      "jumlah": 3,
+      "total_harga": 15000,
       "product": {
         "id": "8",
         "kode": "K-08",
@@ -349,6 +349,40 @@
         "harga": 5000,
         "is_ready": true,
         "gambar": "https://res.cloudinary.com/dczynkwzr/image/upload/v1705570242/pangsit.jpg",
+        "category": {
+          "id": 3,
+          "nama": "Cemilan"
+        }
+      }
+    },
+    {
+      "id": "c092",
+      "jumlah": 1,
+      "total_harga": 14000,
+      "product": {
+        "id": "7",
+        "kode": "K-07",
+        "nama": "Mie Ayam Bakso",
+        "harga": 14000,
+        "is_ready": true,
+        "gambar": "https://res.cloudinary.com/dczynkwzr/image/upload/v1705570242/mie-ayam-bakso.jpg",
+        "category": {
+          "id": 1,
+          "nama": "Makanan"
+        }
+      }
+    },
+    {
+      "id": "117f",
+      "jumlah": 4,
+      "total_harga": 60000,
+      "product": {
+        "id": "10",
+        "kode": "K-010",
+        "nama": "Cheese Burger",
+        "harga": 15000,
+        "is_ready": true,
+        "gambar": "https://res.cloudinary.com/dczynkwzr/image/upload/v1705570242/cheese-burger.jpg",
         "category": {
           "id": 3,
           "nama": "Cemilan"

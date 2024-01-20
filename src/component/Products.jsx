@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { fetchProducts } from '../slice/productsSlice.jsx';
 import {Card,Button} from 'react-bootstrap'
 import {numberFormat} from '../utils/numberFormat.jsx'
-import { fetchCarts,addToCart } from '../slice/cartsSlice.jsx';
+import { fetchCarts,addToCart,updateTotalShopping } from '../slice/cartsSlice.jsx';
 
 
 const Product = () => {
@@ -18,7 +18,12 @@ const Product = () => {
     dispatch(fetchCarts())
   }, [dispatch]);
   
-  // Render komponen sesuai kebutuhan dengan data dari Redux state
+
+  const addToCartAndSumTotalPrice = (product) => {
+    dispatch(addToCart(product))
+    dispatch(updateTotalShopping(product))
+  }
+
   return (
     <>
       {/* {console.log(products)} */}
@@ -32,7 +37,7 @@ const Product = () => {
           <Card.Text>
             Rp. {numberFormat(product.harga)}
           </Card.Text>
-          <Button variant="primary" onClick={()=>{dispatch(addToCart(product))}}>Add to Cart</Button>
+          <Button variant="primary" onClick={()=>{addToCartAndSumTotalPrice(product)}}>Add to Cart</Button>
         </Card.Body>
       </Card>
       ))}
