@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {Card,Button} from 'react-bootstrap'
 import {numberFormat} from '../utils/numberFormat.jsx'
 import { fetchCarts,addToCart,updateTotalShopping } from '../slice/cartsSlice.jsx';
+import ModalCart from './ModalCart.jsx';
 
 
 const Product = () => {
@@ -26,7 +27,7 @@ const Product = () => {
 
   return (
     <>
-      {/* {console.log(products)} */}
+    <ModalCart/>
       <h4>daftar product</h4>
       <hr/>
       {products && products.map(product => (

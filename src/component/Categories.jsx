@@ -20,7 +20,6 @@ export default function Categories() {
   }, [dispatch]);
 
   const pilihCategory = (namaCategory) => {
-    console.log(kategoriDipilih);
     dispatch(selectCategory(namaCategory))
     dispatch(fetchProducts(namaCategory))
   }

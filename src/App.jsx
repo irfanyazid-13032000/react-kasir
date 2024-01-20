@@ -15,7 +15,6 @@ function App() {
         <Row>
           <Categories/>
             <Col>
-              
               <Row>
                 <Products/>
               </Row>

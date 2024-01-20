@@ -323,8 +323,8 @@
     },
     {
       "id": "60af",
-      "jumlah": 17,
-      "total_harga": 238000,
+      "jumlah": 18,
+      "total_harga": 252000,
       "product": {
         "id": "2",
         "kode": "K-02",
@@ -374,8 +374,8 @@
     },
     {
       "id": "117f",
-      "jumlah": 15,
-      "total_harga": 225000,
+      "jumlah": 17,
+      "total_harga": 255000,
       "product": {
         "id": "10",
         "kode": "K-010",

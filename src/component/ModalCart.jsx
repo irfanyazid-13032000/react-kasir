@@ -1,13 +1,14 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useSelector,useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../slice/cartsSlice';
 
 
 
 export default function ModalCart() {
   const dispatch = useDispatch()
-  const show = useSelector((state)=>state.carts.showModal)
+  const show = useSelector((state)=> state.carts.showModal)
+  const selectedInModal = useSelector((state)=>state.carts.selectedInModal)
 
   const tutup = () => {
     dispatch(closeModal())
@@ -17,13 +18,10 @@ export default function ModalCart() {
     <div>
       <Modal show={show} onHide={tutup} animation={false}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title></Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>{selectedInModal.product && selectedInModal.product.nama}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" >
-            Close
-          </Button>
           <Button variant="primary">
             Save Changes
           </Button>

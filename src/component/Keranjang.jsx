@@ -1,8 +1,10 @@
 import { Col, ListGroup,Row,Badge } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { numberFormat } from '../utils/numberFormat'
+import { openModal } from '../slice/cartsSlice'
 
 export default function Keranjang() {
+  const dispatch = useDispatch()
   const carts = useSelector((state)=>state.carts.data)
   const total_shopping = useSelector((state)=>state.carts.total_shopping)
   return (
@@ -11,7 +13,7 @@ export default function Keranjang() {
       <hr />
       <ListGroup as="ul">
         {carts.map((cart)=>(
-      <ListGroup.Item as="li" key={cart.id}>
+      <ListGroup.Item as="li" key={cart.id} onClick={()=>{dispatch(openModal(cart))}}>
         <Row>
           <Col xs="2">
             <h4>

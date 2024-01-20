@@ -47,12 +47,22 @@ const cartsSlice = createSlice({
     data: [],
     loading: false,
     error: null,
-    total_shopping:0
+    total_shopping:0,
+    showModal : false,
+    selectedInModal:{}
   },
   reducers: {
     updateTotalShopping: (state, action) => {
       state.total_shopping += action.payload.harga;
     },
+    openModal : (state,action) => {
+      console.log(action.payload);
+      state.showModal = true
+      state.selectedInModal = action.payload
+    },
+    closeModal:(state) => {
+      state.showModal = false
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -80,7 +90,7 @@ const cartsSlice = createSlice({
     }
   })
 
-  export const { updateTotalShopping } = cartsSlice.actions;
+  export const { updateTotalShopping,openModal,closeModal } = cartsSlice.actions;
 
 
   export const selectCarts = (state) => state.carts.data;
