@@ -19,8 +19,10 @@ export default function ModalCart({qtyState,setQtyState}) {
 
   const increase = (qtyState) => {
     setQtyState({...qtyState, jumlah:qtyState.jumlah+1,total_harga:qtyState.product.harga * (qtyState.jumlah+1)})
-    // setQtyState({...qtyState, total_harga:qtyState.jumlah+1})
+  }
 
+  const decrease = (qtyState) => {
+    setQtyState({...qtyState, jumlah:qtyState.jumlah-1,total_harga:qtyState.product.harga * (qtyState.jumlah-1)})
   }
 
   return (
@@ -31,7 +33,7 @@ export default function ModalCart({qtyState,setQtyState}) {
         </Modal.Header>
         <Modal.Body>
           <h4>Total Harga : {qtyState.total_harga && numberFormat(qtyState.total_harga)}</h4>
-          <p>jumlah : <Button variant="danger">-</Button> {qtyState.jumlah} <Button variant="primary" onClick={()=>increase(qtyState)}>+</Button> </p>
+          <p>jumlah : <Button variant="danger" onClick={()=>decrease(qtyState)}>-</Button> {qtyState.jumlah} <Button variant="primary" onClick={()=>increase(qtyState)}>+</Button> </p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary">
