@@ -6,9 +6,6 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories', as
   return response.data;
 });
 
-
-
-
 const categoriesSlice = createSlice({
   name: 'categories',
   initialState: {

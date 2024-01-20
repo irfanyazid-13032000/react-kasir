@@ -238,8 +238,8 @@
     },
     {
       "id": "80cd",
-      "jumlah": 8,
-      "total_harga": 40000,
+      "jumlah": 13,
+      "total_harga": 65000,
       "product": {
         "id": "9",
         "kode": "K-09",
@@ -255,8 +255,8 @@
     },
     {
       "id": "2333",
-      "jumlah": 23,
-      "total_harga": 345000,
+      "jumlah": 26,
+      "total_harga": 390000,
       "product": {
         "id": "11",
         "kode": "K-011",
@@ -289,8 +289,8 @@
     },
     {
       "id": "602e",
-      "jumlah": 31,
-      "total_harga": 217000,
+      "jumlah": 32,
+      "total_harga": 224000,
       "product": {
         "id": "12",
         "kode": "K-012",
@@ -323,8 +323,8 @@
     },
     {
       "id": "60af",
-      "jumlah": 13,
-      "total_harga": 182000,
+      "jumlah": 17,
+      "total_harga": 238000,
       "product": {
         "id": "2",
         "kode": "K-02",
@@ -374,8 +374,8 @@
     },
     {
       "id": "117f",
-      "jumlah": 4,
-      "total_harga": 60000,
+      "jumlah": 15,
+      "total_harga": 225000,
       "product": {
         "id": "10",
         "kode": "K-010",

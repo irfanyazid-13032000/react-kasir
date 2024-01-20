@@ -17,7 +17,6 @@ export default function Categories() {
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchProducts())
-    // console.log(kategoriDipilih);
   }, [dispatch]);
 
   const pilihCategory = (namaCategory) => {
