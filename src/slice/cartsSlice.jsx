@@ -53,6 +53,9 @@ export const removeCart = createAsyncThunk('carts/removeCart', async (id, { disp
 
 export const updateCart = createAsyncThunk('carts/updateCart',async(product,{dispatch})=>{
   try {
+    // const state = getState();
+    // const sameProduct = state.carts.data.find(item => item.product.id == product.id);
+    // console.log(sameProduct);
     console.log(product);
     await axios.put(`http://localhost:3000/keranjangs/${product.id}`, product);
     dispatch(fetchCarts());
@@ -60,6 +63,7 @@ export const updateCart = createAsyncThunk('carts/updateCart',async(product,{dis
     console.error(error);
   }
 })
+
 
 
 // export const removeCart = createAsyncThunk('carts/removeCart',async ())
@@ -74,19 +78,28 @@ const cartsSlice = createSlice({
     total_shopping:0,
     showModal : false,
     selectedInModal:{},
-    total_qty:0
+    total_qty:0,
+    priceBeforeChanged:0
   },
   reducers: {
     updateTotalShopping: (state, action) => {
       state.total_shopping += action.payload.harga;
     },
+    updateTotalShoppingFromModal:(state,action) => {
+      state.total_shopping = state.total_shopping - state.priceBeforeChanged + action.payload.total_harga
+      // console.log(state.total_shopping);
+    },
     openModal : (state,action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.showModal = true
       state.selectedInModal = action.payload
     },
     closeModal:(state) => {
       state.showModal = false
+    },
+    setPriceBeforeChanged:(state,action) => {
+      state.priceBeforeChanged = action.payload.total_harga
+      // console.log(state.priceBeforeChanged);
     }
   },
   extraReducers: (builder) => {
@@ -137,7 +150,7 @@ const cartsSlice = createSlice({
     }
   })
 
-  export const { updateTotalShopping,openModal,closeModal } = cartsSlice.actions;
+  export const { updateTotalShopping,openModal,closeModal,setPriceBeforeChanged,updateTotalShoppingFromModal } = cartsSlice.actions;
 
 
   export const selectCarts = (state) => state.carts.data;

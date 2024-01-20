@@ -1,7 +1,7 @@
 import { Col, ListGroup,Row,Badge } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { numberFormat } from '../utils/numberFormat'
-import { openModal } from '../slice/cartsSlice'
+import { openModal,setPriceBeforeChanged } from '../slice/cartsSlice'
 // import { useState } from 'react'
 
 export default function Keranjang({setQtyState}) {
@@ -12,6 +12,7 @@ export default function Keranjang({setQtyState}) {
 
   const bukaModalDanSetHarga = (cart) => {
     dispatch(openModal(cart))
+    dispatch(setPriceBeforeChanged(cart))
     setQtyState(cart)
   }
 
