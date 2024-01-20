@@ -1,8 +1,8 @@
 // import './App.css'
 import { Col, Container, Row } from 'react-bootstrap'
 import NavbarComponent from './component/NavbarComponent'
-import ListCategories from './component/ListCategories'
-import Hasil from './component/Hasil'
+import Categories from './component/Categories'
+import Keranjang from './component/Keranjang'
 import Products from './component/Products'
 
 function App() {
@@ -13,14 +13,14 @@ function App() {
     <div className="mt-2">
       <Container fluid>
         <Row>
-          <ListCategories/>
+          <Categories/>
             <Col>
               
               <Row>
                 <Products/>
               </Row>
             </Col>
-          <Hasil/>
+          <Keranjang/>
         </Row>
       </Container>
     </div>

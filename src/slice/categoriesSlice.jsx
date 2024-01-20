@@ -6,14 +6,22 @@ export const fetchCategories = createAsyncThunk('categories/fetchCategories', as
   return response.data;
 });
 
+
+
+
 const categoriesSlice = createSlice({
   name: 'categories',
   initialState: {
     data: [],
     loading: false,
-    error: null
+    error: null,
+    selectedCategory:null
   },
-  reducers: {},
+  reducers: {
+    selectCategory: (state, action) => {
+      state.selectedCategory = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCategories.pending, (state) => {
@@ -26,9 +34,12 @@ const categoriesSlice = createSlice({
       .addCase(fetchCategories.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      });
+      })
   }
 });
+
+export const { selectCategory } = categoriesSlice.actions;
+
 
 export const selectCategories = (state) => state.categories.data;
 export const selectCategoriesLoading = (state) => state.categories.loading;
