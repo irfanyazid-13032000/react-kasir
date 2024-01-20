@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeModal,removeCart } from '../slice/cartsSlice';
+import { closeModal,removeCart,updateCart } from '../slice/cartsSlice';
 import { numberFormat } from '../utils/numberFormat';
 
 
@@ -31,6 +31,11 @@ export default function ModalCart({qtyState,setQtyState}) {
     setQtyState({...qtyState, jumlah:qtyState.jumlah-1,total_harga:qtyState.product.harga * (qtyState.jumlah-1)})
   }
 
+  const updateKeranjang = (product) => {
+    dispatch(updateCart(product))
+    dispatch(closeModal())
+  }
+
   return (
     <div>
       <Modal show={show} onHide={tutup} animation={false}>
@@ -42,7 +47,7 @@ export default function ModalCart({qtyState,setQtyState}) {
           <p>jumlah : <Button variant="danger" onClick={()=>decrease(qtyState)}>-</Button> {qtyState.jumlah} <Button variant="primary" onClick={()=>increase(qtyState)}>+</Button> </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary">
+          <Button variant="primary" onClick={()=>{updateKeranjang(qtyState)}}>
             Save Changes
           </Button>
           <Button variant="danger" onClick={()=>{remove(qtyState.id)}}>

@@ -51,6 +51,16 @@ export const removeCart = createAsyncThunk('carts/removeCart', async (id, { disp
   }
 });
 
+export const updateCart = createAsyncThunk('carts/updateCart',async(product,{dispatch})=>{
+  try {
+    console.log(product);
+    await axios.put(`http://localhost:3000/keranjangs/${product.id}`, product);
+    dispatch(fetchCarts());
+  } catch (error) {
+    console.error(error);
+  }
+})
+
 
 // export const removeCart = createAsyncThunk('carts/removeCart',async ())
 
@@ -111,7 +121,19 @@ const cartsSlice = createSlice({
       .addCase(removeCart.rejected, (state, action) => {
         state.loading = false;
         console.error(action.error);
-      });
+      })
+      .addCase(updateCart.pending, (state) => {
+        state.loading = true;
+        // console.error(action.error);
+      })
+      .addCase(updateCart.fulfilled, (state) => {
+        state.loading = false;
+        // console.error(action.error);
+      })
+      .addCase(updateCart.rejected, (state,action) => {
+        state.loading = false;
+        console.error(action.error);
+      })
     }
   })
 
