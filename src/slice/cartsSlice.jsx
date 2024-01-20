@@ -41,6 +41,20 @@ export const addToCart = createAsyncThunk('carts/addToCart', async (newCartItem,
 });
 
 
+export const removeCart = createAsyncThunk('carts/removeCart', async (id, { dispatch }) => {
+  try {
+    await axios.delete(`http://localhost:3000/keranjangs/${id}`);
+    dispatch(fetchCarts());
+  } catch (err) {
+    console.error(err);
+    throw err; // Rethrow the error so it can be handled by the rejected case
+  }
+});
+
+
+// export const removeCart = createAsyncThunk('carts/removeCart',async ())
+
+
 const cartsSlice = createSlice({
   name: 'carts',
   initialState: {
@@ -87,6 +101,16 @@ const cartsSlice = createSlice({
       .addCase(addToCart.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+      })
+      .addCase(removeCart.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(removeCart.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(removeCart.rejected, (state, action) => {
+        state.loading = false;
+        console.error(action.error);
       });
     }
   })

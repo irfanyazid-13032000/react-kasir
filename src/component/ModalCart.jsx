@@ -1,8 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeModal } from '../slice/cartsSlice';
+import { closeModal,removeCart } from '../slice/cartsSlice';
 import { numberFormat } from '../utils/numberFormat';
+
 
 
 
@@ -14,6 +15,11 @@ export default function ModalCart({qtyState,setQtyState}) {
   
 
   const tutup = () => {
+    dispatch(closeModal())
+  }
+
+  const remove = (id) => {
+    dispatch(removeCart(id))
     dispatch(closeModal())
   }
 
@@ -38,6 +44,9 @@ export default function ModalCart({qtyState,setQtyState}) {
         <Modal.Footer>
           <Button variant="primary">
             Save Changes
+          </Button>
+          <Button variant="danger" onClick={()=>{remove(qtyState.id)}}>
+            Delete
           </Button>
         </Modal.Footer>
       </Modal>

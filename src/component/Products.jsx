@@ -1,6 +1,6 @@
 // Product.js
 
-import { useEffect,useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { fetchProducts } from '../slice/productsSlice.jsx';
 import {Card,Button} from 'react-bootstrap'
