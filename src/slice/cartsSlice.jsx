@@ -49,7 +49,8 @@ const cartsSlice = createSlice({
     error: null,
     total_shopping:0,
     showModal : false,
-    selectedInModal:{}
+    selectedInModal:{},
+    total_qty:0
   },
   reducers: {
     updateTotalShopping: (state, action) => {

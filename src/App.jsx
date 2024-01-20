@@ -4,9 +4,12 @@ import NavbarComponent from './component/NavbarComponent'
 import Categories from './component/Categories'
 import Keranjang from './component/Keranjang'
 import Products from './component/Products'
+import {useState} from 'react'
 
 function App() {
 
+  const [qtyState,setQtyState] = useState(0)
+  
   return (
     <>
     <NavbarComponent/>
@@ -16,10 +19,10 @@ function App() {
           <Categories/>
             <Col>
               <Row>
-                <Products/>
+                <Products qtyState={qtyState} setQtyState={setQtyState}/>
               </Row>
             </Col>
-          <Keranjang/>
+          <Keranjang setQtyState={setQtyState}/>
         </Row>
       </Container>
     </div>

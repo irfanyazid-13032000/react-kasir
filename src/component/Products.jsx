@@ -1,6 +1,6 @@
 // Product.js
 
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { fetchProducts } from '../slice/productsSlice.jsx';
 import {Card,Button} from 'react-bootstrap'
@@ -9,9 +9,11 @@ import { fetchCarts,addToCart,updateTotalShopping } from '../slice/cartsSlice.js
 import ModalCart from './ModalCart.jsx';
 
 
-const Product = () => {
+
+const Product = ({qtyState,setQtyState}) => {
   const dispatch = useDispatch();
   const products = useSelector((state)=>state.products.data);
+  
   // const carts = useSelector((state)=>state.carts.data)
 
   useEffect(() => {
@@ -27,7 +29,7 @@ const Product = () => {
 
   return (
     <>
-    <ModalCart/>
+    <ModalCart qtyState={qtyState} setQtyState={setQtyState}/>
       <h4>daftar product</h4>
       <hr/>
       {products && products.map(product => (

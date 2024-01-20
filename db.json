@@ -255,8 +255,8 @@
     },
     {
       "id": "2333",
-      "jumlah": 26,
-      "total_harga": 390000,
+      "jumlah": 28,
+      "total_harga": 420000,
       "product": {
         "id": "11",
         "kode": "K-011",
@@ -289,8 +289,8 @@
     },
     {
       "id": "602e",
-      "jumlah": 32,
-      "total_harga": 224000,
+      "jumlah": 33,
+      "total_harga": 231000,
       "product": {
         "id": "12",
         "kode": "K-012",
@@ -340,8 +340,8 @@
     },
     {
       "id": "8dff",
-      "jumlah": 3,
-      "total_harga": 15000,
+      "jumlah": 4,
+      "total_harga": 20000,
       "product": {
         "id": "8",
         "kode": "K-08",
@@ -386,6 +386,23 @@
         "category": {
           "id": 3,
           "nama": "Cemilan"
+        }
+      }
+    },
+    {
+      "id": "76f8",
+      "jumlah": 1,
+      "total_harga": 12000,
+      "product": {
+        "id": "3",
+        "kode": "K-03",
+        "nama": "Nasi Rames",
+        "harga": 12000,
+        "is_ready": true,
+        "gambar": "https://res.cloudinary.com/dczynkwzr/image/upload/v1705570242/nasi-rames.jpg",
+        "category": {
+          "id": 1,
+          "nama": "Makanan"
         }
       }
     }
