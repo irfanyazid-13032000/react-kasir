@@ -171,59 +171,7 @@
       }
     }
   ],
-  "keranjangs": [
-    {
-      "id": "91a9",
-      "jumlah": 2,
-      "total_harga": 28000,
-      "product": {
-        "id": "2",
-        "kode": "K-02",
-        "nama": "Nasi Goreng Telur",
-        "harga": 14000,
-        "is_ready": true,
-        "gambar": "https://res.cloudinary.com/dczynkwzr/image/upload/v1705570242/nasi-goreng-telor.jpg",
-        "category": {
-          "id": 1,
-          "nama": "Makanan"
-        }
-      }
-    },
-    {
-      "id": "cc89",
-      "jumlah": 2,
-      "total_harga": 32000,
-      "product": {
-        "id": "1",
-        "kode": "K-01",
-        "nama": "Sate Ayam",
-        "harga": 16000,
-        "is_ready": true,
-        "gambar": "https://res.cloudinary.com/dczynkwzr/image/upload/v1705570242/sate-ayam.jpg",
-        "category": {
-          "id": 1,
-          "nama": "Makanan"
-        }
-      }
-    },
-    {
-      "id": "ca81",
-      "jumlah": 2,
-      "total_harga": 20000,
-      "product": {
-        "id": "6",
-        "kode": "K-06",
-        "nama": "Bakso",
-        "harga": 10000,
-        "is_ready": true,
-        "gambar": "https://res.cloudinary.com/dczynkwzr/image/upload/v1705570242/bakso.jpg",
-        "category": {
-          "id": 1,
-          "nama": "Makanan"
-        }
-      }
-    }
-  ],
+  "keranjangs": [],
   "pesanans": [
     {
       "total_bayar": 60000,

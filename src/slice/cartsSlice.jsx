@@ -41,9 +41,9 @@ export const addToCart = createAsyncThunk('carts/addToCart', async (newCartItem,
 });
 
 
-export const removeCart = createAsyncThunk('carts/removeCart', async (id, { dispatch }) => {
+export const removeCart = createAsyncThunk('carts/removeCart', async (product, { dispatch }) => {
   try {
-    await axios.delete(`http://localhost:3000/keranjangs/${id}`);
+    await axios.delete(`http://localhost:3000/keranjangs/${product.id}`);
     dispatch(fetchCarts());
   } catch (err) {
     console.error(err);
@@ -88,6 +88,9 @@ const cartsSlice = createSlice({
     updateTotalShoppingFromModal:(state,action) => {
       state.total_shopping = state.total_shopping - state.priceBeforeChanged + action.payload.total_harga
       // console.log(state.total_shopping);
+    },
+    deletePriceWhenRemoveItem:(state,action) => {
+      state.total_shopping = state.total_shopping - action.payload.total_harga
     },
     openModal : (state,action) => {
       // console.log(action.payload);
@@ -150,7 +153,7 @@ const cartsSlice = createSlice({
     }
   })
 
-  export const { updateTotalShopping,openModal,closeModal,setPriceBeforeChanged,updateTotalShoppingFromModal } = cartsSlice.actions;
+  export const { updateTotalShopping,openModal,closeModal,setPriceBeforeChanged,updateTotalShoppingFromModal,deletePriceWhenRemoveItem } = cartsSlice.actions;
 
 
   export const selectCarts = (state) => state.carts.data;
