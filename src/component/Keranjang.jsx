@@ -1,8 +1,8 @@
 import { Col, ListGroup,Row,Badge } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { numberFormat } from '../utils/numberFormat'
-import { openModal,setPriceBeforeChanged } from '../slice/cartsSlice'
-// import { useState } from 'react'
+import { openModal,setPriceBeforeChanged,fetchCarts,fetchTotalHarga } from '../slice/cartsSlice'
+import { useEffect } from 'react'
 
 export default function Keranjang({setQtyState}) {
   const dispatch = useDispatch()
@@ -15,6 +15,11 @@ export default function Keranjang({setQtyState}) {
     dispatch(setPriceBeforeChanged(cart))
     setQtyState(cart)
   }
+
+  useEffect(() => {
+    dispatch(fetchTotalHarga())
+    dispatch(fetchCarts())
+  }, [dispatch]);
 
 
   return (

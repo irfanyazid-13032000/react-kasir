@@ -6,6 +6,11 @@ export const fetchCarts = createAsyncThunk('carts/fetchCarts', async () => {
   return response.data;
 });
 
+export const fetchTotalHarga = createAsyncThunk('carts/fetchTotalHarga',async () => {
+  const response = await axios.get("http://localhost:3000/totalnya")
+  return response.data.total_harga_semua
+})
+
 
 export const addToCart = createAsyncThunk('carts/addToCart', async (newCartItem, { dispatch, getState }) => {
   try {
@@ -53,9 +58,6 @@ export const removeCart = createAsyncThunk('carts/removeCart', async (product, {
 
 export const updateCart = createAsyncThunk('carts/updateCart',async(product,{dispatch})=>{
   try {
-    // const state = getState();
-    // const sameProduct = state.carts.data.find(item => item.product.id == product.id);
-    // console.log(sameProduct);
     console.log(product);
     await axios.put(`http://localhost:3000/keranjangs/${product.id}`, product);
     dispatch(fetchCarts());
@@ -64,9 +66,28 @@ export const updateCart = createAsyncThunk('carts/updateCart',async(product,{dis
   }
 })
 
+export const updateTotalHarga = createAsyncThunk('updateTotalHarga',async (product,{ dispatch, getState })=>{
+  try {
+    const state = getState();
+    console.log(product);
+    const totalHarga = await axios.put(`http://localhost:3000/totalnya`, {total_harga_semua:state.carts.total_shopping - state.carts.priceBeforeChanged + product.total_harga});
+    dispatch(fetchTotalHarga())
+    return totalHarga.data
+  } catch (error) {
+    console.log(error);
+  }
+})
 
-
-// export const removeCart = createAsyncThunk('carts/removeCart',async ())
+export const updateHargaCardProduct = createAsyncThunk('updateHargaCardProduct',async (product,{dispatch,getState})=>{
+  try {
+    const state = getState()
+    await axios.put(`http://localhost:3000/totalnya`, {total_harga_semua:state.carts.total_shopping + product.harga});
+    dispatch(fetchTotalHarga())
+  } catch (error) {
+    console.log(error);
+  }
+ 
+})
 
 
 const cartsSlice = createSlice({
@@ -149,6 +170,9 @@ const cartsSlice = createSlice({
       .addCase(updateCart.rejected, (state,action) => {
         state.loading = false;
         console.error(action.error);
+      })
+      .addCase(fetchTotalHarga.fulfilled, (state,action) => {
+        state.total_shopping = action.payload;
       })
     }
   })
