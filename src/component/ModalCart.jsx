@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeModal,removeCart,updateCart,updateTotalShoppingFromModal,deletePriceWhenRemoveItem,updateTotalHarga } from '../slice/cartsSlice';
+import { closeModal,removeCart,updateCart,updateTotalShoppingFromModal,deletePriceWhenRemoveItem,updateTotalHarga,deletePriceWhenRemoveItemInDbJson } from '../slice/cartsSlice';
 import { numberFormat } from '../utils/numberFormat';
 
 
@@ -21,6 +21,7 @@ export default function ModalCart({qtyState,setQtyState}) {
   const remove = (product) => {
     dispatch(removeCart(product))
     dispatch(deletePriceWhenRemoveItem(product))
+    dispatch(deletePriceWhenRemoveItemInDbJson(product))
     dispatch(closeModal())
   }
 

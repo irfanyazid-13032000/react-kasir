@@ -89,6 +89,17 @@ export const updateHargaCardProduct = createAsyncThunk('updateHargaCardProduct',
  
 })
 
+export const deletePriceWhenRemoveItemInDbJson = createAsyncThunk('deletePriceWhenRemoveItemInDbJson',async (product,{dispatch,getState})=>{
+  try {
+    const state = getState()
+    await axios.put(`http://localhost:3000/totalnya`, {total_harga_semua:state.carts.total_shopping});
+    dispatch(fetchTotalHarga())
+  } catch (error) {
+    console.log(error);
+  }
+ 
+})
+
 
 const cartsSlice = createSlice({
   name: 'carts',
