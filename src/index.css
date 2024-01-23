@@ -1,75 +1,206 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Public Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.bg-nav {
+  background: linear-gradient(90deg, rgba(173,251,224,1) 0%, rgba(29,197,232,1) 54%, rgba(0,138,255,1) 100%);
 }
 
-body {
-  margin: 0;
-  /* display: flex;
-  place-items: center; */
-  /* min-width: 320px; */
+.nav-title {
+  font-size: 30px;
+  font-weight: 600;
+  color: #008aff;
+  margin-left: -5px;
+  text-decoration: none;
+}
+
+.nav-con {
+  font-size: 20px;
+  font-weight: 600;
+  justify-content: center;
+}
+
+.nav-con .nav-link {
+  color: #008aff;
+}
+
+.b-login button {
+  background: #adfbe0;
+  color: #008aff;
+  font-weight: 550;
+  width: 80px;
+  height: 40px;
+  border: 0;
+  border-radius: 75px;
+}
+
+.b-register button {
+  background: #adfbe0;
+  color: #008aff;
+  font-weight: 550;
+  width: 80px;
+  height: 40px;
+  border: 0;
+  border-radius: 75px;
+  margin-right: -5px;
+}
+
+.b-login button:hover, .b-register button:hover {
+  background: #1dc5e8;
+  color: #ffffff;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(173,251,224,1) 0%, rgba(29,197,232,1) 54%, rgba(0,138,255,1) 100%);
+}
+
+/* CSS for login register */
+/* lr = stands for login register */
+
+.bg-lr {
+  background: linear-gradient(90deg, rgba(173,251,224,1) 0%, rgba(29,197,232,1) 54%, rgba(0,138,255,1) 100%);
+}
+
+.container-lr {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-lr {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 40px 0px 40px 0px;
+}
+
+.eye-icon {
+  color: #008aff;
+}
+
+.eye-icon:hover {
+  color: #1dc5e8; 
+}
+
+.lr-link {
+  text-decoration: none;
+  color: #008aff;
+}
+
+.lr-link:hover {
+  color: #1dc5e8;
+}
+
+.button-lr {
+  background-color: #008aff;
+  color: #fff;
+}
+
+.button-lr:hover {
+  background-color: #1dc5e8;
+  color: #fff;
+}
+
+hr {
+  border: 2px solid #008aff;
+  margin-top: -2px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
   min-height: 100vh;
-  font-family: 'Public Sans', sans-serif;
-  /* font-family: 'Roboto', sans-serif; */
-  /* font-family: 'Sevillana', cursive; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.App-link {
+  color: #61dafb;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  to {
+    transform: rotate(360deg);
   }
 }
 
-.navbar{
-  background-color: #535bf2;
+.category-list {
+  margin-bottom: -1px;
+}
+
+.category-aktif {
+  background-color: #008aff;
+  color: white;
+}
+
+.btn-bayar {
+  background-color: #008aff;
+  border: 0;
+}
+
+.list-hasil {
+  margin-top: 10px;
+}
+
+.list-item {
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 50%;
+}
+
+.margin-hasil {
+  margin-top: -5px;
+  margin-bottom: 0;
+}
+
+.margin-ket {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.margin-sukses {
+  margin-top: -50px;
+}
+
+.overflow-auto::-webkit-scrollbar {
+  display: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
