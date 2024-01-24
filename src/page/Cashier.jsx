@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import withTokenValidation from '../utils/withTokenValidation'
 
 import NavbarComponent from "../component/NavbarComponent"
 import { Col, Container, Row } from "react-bootstrap"
@@ -6,7 +7,7 @@ import Categories from "../component/Categories"
 import Keranjang from "../component/Keranjang"
 import Products from "../component/Products"
 
-function Cashier() {
+const  Cashier = () => {
   const [qtyState,setQtyState] = useState(0)
   return (
     <div>
@@ -28,4 +29,4 @@ function Cashier() {
   )
 }
 
-export default Cashier
+export default withTokenValidation(Cashier)

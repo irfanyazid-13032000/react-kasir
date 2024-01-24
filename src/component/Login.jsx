@@ -41,16 +41,13 @@ const navigate = useNavigate();
         }
     }).then(response => {
         localStorage.setItem('token', JSON.stringify(response.data.data.token));
+        localStorage.setItem('role', JSON.stringify(response.data.data.role));
         navigate('/cashier');
         console.log("hore berhasil",response.data.data.token);
     }).catch(err=>{
         console.log("error terus kamu ",err);
+        alert("password atau username salah")
     })
-
-
-
-    
-
 
 };
 

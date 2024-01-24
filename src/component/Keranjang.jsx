@@ -24,7 +24,7 @@ export default function Keranjang({setQtyState}) {
 
   return (
     <Col md={3} mt="2">
-      <h4>Keranjang</h4>
+      <h4>Keranjang for {localStorage.getItem('role')}</h4>
       <hr />
       <ListGroup as="ul">
         {carts.map((cart)=>(
