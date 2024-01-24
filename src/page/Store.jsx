@@ -37,7 +37,7 @@ export default function Store() {
           <th>store name</th>
           <th>address</th>
           <th>phone</th>
-          <th>action</th>
+          <th style={{textAlign:"center"}}>action</th>
         </tr>
         </thead>
         <tbody>
@@ -48,7 +48,11 @@ export default function Store() {
             <td>{store.storeName}</td>
             <td>{store.address}</td>
             <td>{store.phone}</td>
-            <th><button className="btn btn-danger" onClick={()=>{dispatch(deleteStore(store.id))}}>delete</button></th>
+            <th>
+              <button className="btn btn-warning" onClick={()=>{dispatch(deleteStore(store.id))}}>edit</button>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <button className="btn btn-danger" onClick={()=>{dispatch(deleteStore(store.id))}}>delete</button>
+            </th>
           </tr>
           ))}
         </tbody>
