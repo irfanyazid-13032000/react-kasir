@@ -61,9 +61,9 @@ export default function Store() {
             <td>{store.address}</td>
             <td>{store.phone}</td>
             <th>
-              <button className="btn btn-warning" onClick={()=>{editStore(store.id)}}>edit</button>
+              <button className={(localStorage.getItem('role').trim() == '"ROLE_CUSTOMER"') ? "d-none" : "btn btn-warning"} onClick={()=>{editStore(store.id)}}>edit</button>
               &nbsp;&nbsp;&nbsp;&nbsp;
-              <button className="btn btn-danger" onClick={()=>{dispatch(deleteStore(store.id))}}>delete</button>
+              <button className={(localStorage.getItem('role').trim() == '"ROLE_CUSTOMER"') ? "d-none" : "btn btn-danger"} onClick={()=>{dispatch(deleteStore(store.id))}}>delete</button>
             </th>
           </tr>
           ))}
