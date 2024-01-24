@@ -1,8 +1,9 @@
 import { useEffect,useState } from "react"
 import NavbarComponent from "../component/NavbarComponent"
 import { useDispatch,useSelector } from "react-redux"
-import { fetchStore,deleteStore } from "../slice/storeSlice"
+import { fetchStore,deleteStore,getByIdStore } from "../slice/storeSlice"
 import ModalCreate from "../component/ModalCreate"
+import ModalEdit from "../component/ModalEdit"
 
 
 export default function Store() {
@@ -10,13 +11,25 @@ export default function Store() {
   const stores = useSelector((state)=>state.stores.data)
 
   const [show, setShow] = useState(false);
+  const [showEdit,setShowEdit] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleShowEdit = () => setShowEdit(true);
+  const handleCloseEdit = () => setShowEdit(false)
 
 
   useEffect(()=>{
     dispatch(fetchStore())
   },[dispatch])
+
+  const editStore = (id) => {
+    dispatch(getByIdStore(id))
+    handleShowEdit()
+  }
+
+
+
 
   return (
     <>
@@ -26,8 +39,7 @@ export default function Store() {
 
       <ModalCreate show={show} handleShow={handleShow} handleClose={handleClose}/>
 
-     
-
+      <ModalEdit showEdit={showEdit} handleCloseEdit={handleCloseEdit}/>
 
       <table className="table">
         <thead>
@@ -49,7 +61,7 @@ export default function Store() {
             <td>{store.address}</td>
             <td>{store.phone}</td>
             <th>
-              <button className="btn btn-warning" onClick={()=>{dispatch(deleteStore(store.id))}}>edit</button>
+              <button className="btn btn-warning" onClick={()=>{editStore(store.id)}}>edit</button>
               &nbsp;&nbsp;&nbsp;&nbsp;
               <button className="btn btn-danger" onClick={()=>{dispatch(deleteStore(store.id))}}>delete</button>
             </th>

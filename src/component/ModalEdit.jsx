@@ -1,44 +1,47 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import { useState} from 'react'
-import { addStore } from '../slice/storeSlice';
-import { useDispatch } from 'react-redux';
-import { generateRandomString } from '../utils/randomString';
+import { useState,useEffect } from 'react'
+import { editStore } from '../slice/storeSlice';
+import { useDispatch,useSelector } from 'react-redux';
 
 
-export default function ModalCreate({show,handleShow,handleClose}) {
+export default function ModalEdit({showEdit,handleCloseEdit}) {
   const dispatch = useDispatch()
-  const [noSiup,setNosiup] = useState(generateRandomString(10))
+  const selectedStore = useSelector((state)=>state.stores.selectedStore)
+  const [noSiup,setNosiup] = useState("")
   const [storeName,setStoreName] = useState("")
   const [address,setAddress] = useState("")
   const [phone,setPhone] = useState("")
 
 
-  const handleSubmit = (e) => {
+  const handleSubmitEdit = (e) => {
   e.preventDefault()
   if (!validationInput()) {
     return
   }
   
-  dispatch(addStore({
+  dispatch(editStore({
+    id:selectedStore.id,
     noSiup:noSiup,
     storeName:storeName,
     address:address,
     phone:phone
   }))
-  setNosiup("")
   setStoreName("")
   setAddress("")
   setPhone("")
-  handleClose()
+  handleCloseEdit()
   }
 
-  // useEffect(()=>{
-  //   if (selectedStore != {}) {
-  //     setStoreName(selectedStore.storeName)
-  //   }
-  // },[setStoreName,selectedStore,dispatch])
+  useEffect(()=>{
+    if (selectedStore != {}) {
+      setNosiup(selectedStore.noSiup || "")
+      setStoreName(selectedStore.storeName || "")
+      setAddress(selectedStore.address || "")
+      setPhone(selectedStore.phone || "")
+    }
+  },[setStoreName,selectedStore,dispatch])
 
   const validationInput = () => {
     if (storeName == "" || address == "" || phone == "") {
@@ -51,14 +54,12 @@ export default function ModalCreate({show,handleShow,handleClose}) {
 
   return (
     <div>
-       <Button variant="primary" onClick={handleShow}>
-        Create
-      </Button>
+      
 
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={showEdit} onHide={handleCloseEdit}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Something</Modal.Title>
+          <Modal.Title>Change Something</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -68,7 +69,6 @@ export default function ModalCreate({show,handleShow,handleClose}) {
                 type="text"
                 value={noSiup}
                 onChange={(e)=>setNosiup(e.target.value)}
-                autoFocus
               />
             </Form.Group>
             <Form.Group
@@ -104,13 +104,13 @@ export default function ModalCreate({show,handleShow,handleClose}) {
                 onChange={(e)=>setPhone(e.target.value)}
                 />
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleSubmit}>
-            Save
+            <Button variant="primary" type="submit" onClick={handleSubmitEdit}>
+            Change
           </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleCloseEdit}>
             Close
           </Button>
         </Modal.Footer>
