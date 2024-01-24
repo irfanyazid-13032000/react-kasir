@@ -1,12 +1,18 @@
-import { useEffect } from "react"
+import { useEffect,useState } from "react"
 import NavbarComponent from "../component/NavbarComponent"
 import { useDispatch,useSelector } from "react-redux"
 import { fetchStore } from "../slice/storeSlice"
+import ModalCreate from "../component/ModalCreate"
+
 
 export default function Store() {
   const dispatch = useDispatch()
-
   const stores = useSelector((state)=>state.stores.data)
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
 
   useEffect(()=>{
     dispatch(fetchStore())
@@ -17,6 +23,12 @@ export default function Store() {
     <NavbarComponent/>
     <div className='container'>
       <h2>Data Store</h2>
+
+      <ModalCreate show={show} handleShow={handleShow} handleClose={handleClose}/>
+
+     
+
+
       <table className="table">
         <thead>
         <tr>
