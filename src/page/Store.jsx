@@ -4,9 +4,10 @@ import { useDispatch,useSelector } from "react-redux"
 import { fetchStore,deleteStore,getByIdStore } from "../slice/storeSlice"
 import ModalCreate from "../component/ModalCreate"
 import ModalEdit from "../component/ModalEdit"
+import withTokenValidation from '../utils/withTokenValidation'
 
 
-export default function Store() {
+const Store = () => {
   const dispatch = useDispatch()
   const stores = useSelector((state)=>state.stores.data)
 
@@ -27,9 +28,6 @@ export default function Store() {
     dispatch(getByIdStore(id))
     handleShowEdit()
   }
-
-
-
 
   return (
     <>
@@ -73,3 +71,6 @@ export default function Store() {
     </>
   )
 }
+
+
+export default withTokenValidation(Store)

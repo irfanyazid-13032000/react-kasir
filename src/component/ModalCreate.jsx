@@ -5,9 +5,10 @@ import { useState} from 'react'
 import { addStore } from '../slice/storeSlice';
 import { useDispatch } from 'react-redux';
 import { generateRandomString } from '../utils/randomString';
+import withTokenValidation from '../utils/withTokenValidation';
 
 
-export default function ModalCreate({show,handleShow,handleClose}) {
+const ModalCreate = ({show,handleShow,handleClose}) => {
   const dispatch = useDispatch()
   const [noSiup,setNosiup] = useState(generateRandomString(10))
   const [storeName,setStoreName] = useState("")
@@ -34,12 +35,6 @@ export default function ModalCreate({show,handleShow,handleClose}) {
   handleClose()
   }
 
-  // useEffect(()=>{
-  //   if (selectedStore != {}) {
-  //     setStoreName(selectedStore.storeName)
-  //   }
-  // },[setStoreName,selectedStore,dispatch])
-
   const validationInput = () => {
     if (storeName == "" || address == "" || phone == "") {
       alert("loh masih kosong ini")
@@ -51,7 +46,7 @@ export default function ModalCreate({show,handleShow,handleClose}) {
 
   return (
     <div>
-       <Button variant="primary" onClick={handleShow} className={(localStorage.getItem('role').trim() == '"ROLE_CUSTOMER"') ? "d-none" : "btn btn-warning"}>
+       <Button variant="primary" onClick={handleShow} className={(localStorage && localStorage.getItem('role') == '"ROLE_CUSTOMER"') ? "d-none" : "btn btn-warning"}>
         Create
       </Button>
 
@@ -118,3 +113,6 @@ export default function ModalCreate({show,handleShow,handleClose}) {
     </div>
   )
 }
+
+
+export default withTokenValidation(ModalCreate)

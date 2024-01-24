@@ -4,9 +4,10 @@ import Modal from 'react-bootstrap/Modal';
 import { useState,useEffect } from 'react'
 import { editStore } from '../slice/storeSlice';
 import { useDispatch,useSelector } from 'react-redux';
+import withTokenValidation from '../utils/withTokenValidation';
 
 
-export default function ModalEdit({showEdit,handleCloseEdit}) {
+const ModalEdit = ({showEdit,handleCloseEdit}) => {
   const dispatch = useDispatch()
   const selectedStore = useSelector((state)=>state.stores.selectedStore)
   const [noSiup,setNosiup] = useState("")
@@ -118,3 +119,6 @@ export default function ModalEdit({showEdit,handleCloseEdit}) {
     </div>
   )
 }
+
+
+export default withTokenValidation(ModalEdit)
