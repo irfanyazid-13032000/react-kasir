@@ -75,12 +75,12 @@ const handleShowPassword = () => {
         <div className="container container-lr">
             <div className="col-md-8">
                 <form className="border form-lr" onSubmit={handleSubmit}>
-                    <div className="row container-fluid justify-content-center">
+                    <div className="row justify-content-center">
                         <div className="col-md-4 d-flex">
-                            <img src="public/images/Login.svg" alt="login form" className="img-fluid" />
+                            <img src="public/images/koreanmakanan.png" alt="login form" className="img-fluid" />
                         </div>
-                        <div className='col-md-7 p-4'>
-                            <h4 className="mb-3">Masuk</h4>
+                        <div className='col-md-7 p-1'>
+                            <h4 className="mb-3">Login</h4>
                             <div className="row">
                                 <div className="mb-2 col-md-12">
                                     <label className="mb-2">username<span className="text-danger"> *</span></label>

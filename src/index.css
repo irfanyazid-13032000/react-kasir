@@ -63,14 +63,14 @@ body {
   align-items: center;
   height: 100vh;
   width: 100%;
-  background: linear-gradient(90deg, rgba(173,251,224,1) 0%, rgba(29,197,232,1) 54%, rgba(0,138,255,1) 100%);
+  background: linear-gradient(90deg, rgb(94, 191, 157) 0%, rgb(33, 93, 105) 54%, rgb(135, 199, 255)00%);
 }
 
 /* CSS for login register */
 /* lr = stands for login register */
 
 .bg-lr {
-  background: linear-gradient(90deg, rgba(173,251,224,1) 0%, rgba(29,197,232,1) 54%, rgba(0,138,255,1) 100%);
+  background: linear-gradient(90deg, rgb(64, 123, 102) 0%, rgb(34, 115, 131) 54%, rgb(46, 97, 141)100%);
 }
 
 .container-lr {
@@ -89,7 +89,7 @@ body {
 }
 
 .eye-icon {
-  color: #008aff;
+  color: #294c6b;
 }
 
 .eye-icon:hover {
