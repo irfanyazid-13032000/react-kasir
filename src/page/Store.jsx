@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react"
 import NavbarComponent from "../component/NavbarComponent"
 import { useDispatch,useSelector } from "react-redux"
-import { fetchStore } from "../slice/storeSlice"
+import { fetchStore,deleteStore } from "../slice/storeSlice"
 import ModalCreate from "../component/ModalCreate"
 
 
@@ -48,7 +48,7 @@ export default function Store() {
             <td>{store.storeName}</td>
             <td>{store.address}</td>
             <td>{store.phone}</td>
-            <th><button className="btn btn-danger">delete</button></th>
+            <th><button className="btn btn-danger" onClick={()=>{dispatch(deleteStore(store.id))}}>delete</button></th>
           </tr>
           ))}
         </tbody>

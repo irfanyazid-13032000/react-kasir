@@ -27,6 +27,12 @@ export const addStore = createAsyncThunk('stores/addStore',async (newStore,{disp
 })
 
 
+export const deleteStore = createAsyncThunk('stores/deleteStore',async (storeId,{dispatch})=>{
+  await axios.delete('http://localhost:8088/store/'+storeId)
+  dispatch(fetchStore())
+})
+
+
 const storeSlice = createSlice({
   name:"stores",
   initialState:{

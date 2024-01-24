@@ -4,11 +4,12 @@ import Modal from 'react-bootstrap/Modal';
 import {useState} from 'react'
 import { addStore } from '../slice/storeSlice';
 import { useDispatch } from 'react-redux';
+import { generateRandomString } from '../utils/randomString';
 
 
 export default function ModalCreate({show,handleShow,handleClose}) {
   const dispatch = useDispatch()
-  const [noSiup,setNosiup] = useState("")
+  const [noSiup,setNosiup] = useState(generateRandomString(10))
   const [storeName,setStoreName] = useState("")
   const [address,setAddress] = useState("")
   const [phone,setPhone] = useState("")
@@ -16,14 +17,29 @@ export default function ModalCreate({show,handleShow,handleClose}) {
 
   const handleSubmit = (e) => {
   e.preventDefault()
+  if (!validationInput()) {
+    return
+  }
+  
   dispatch(addStore({
     noSiup:noSiup,
     storeName:storeName,
     address:address,
     phone:phone
   }))
-  alert("sudah ditekan!!!")
+  setNosiup(generateRandomString(10))
+  setStoreName("")
+  setAddress("")
+  setPhone("")
   handleClose()
+  }
+
+  const validationInput = () => {
+    if (storeName == "" || address == "" || phone == "") {
+      alert("loh masih kosong ini")
+      return false
+    }
+    return true
   }
 
 
@@ -44,7 +60,6 @@ export default function ModalCreate({show,handleShow,handleClose}) {
               <Form.Label>No Siup</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="ayodong"
                 value={noSiup}
                 onChange={(e)=>setNosiup(e.target.value)}
                 autoFocus
